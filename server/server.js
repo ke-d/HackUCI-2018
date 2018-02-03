@@ -1,6 +1,8 @@
 var express = require("express");
 var app = express();
 var cors = require('cors');
+var request = require('request');
+
 app.use(cors());
 const testData = {
   "total": 8228,
@@ -48,18 +50,13 @@ const testData = {
 };
 
 app.get("/testData", (req, res) => {
-  console.log("Server running")
-  res.send(testData);
+  request({url: "https://api.yelp.com/v3/businesses/search?location=92844&results=restaurants", headers: {"Access-Control-Allow-Origin": "*", Authorization: `Bearer Ic0tWvEOzB9fGAUPFeL4y9hQv6jbDd7ACqSy5-2bI9JGLH92qNCOuLRt203kcO7pETQWjQGGEAKLINaHCyd284LUEn3SkdMb0iUHotj3lQ0h11cQD3YsGkSrsWB1WnYx`}}, (error, response, body) => {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+      res.send(body);
+    }
+  })
+
 });
 
 app.listen(8080);
-
-
-
-
-// request({url: "https://api.yelp.com/v3/businesses/search?location=92844&results=restaurants", headers: {"Access-Control-Allow-Origin": "*", Authorization: `Bearer Ic0tWvEOzB9fGAUPFeL4y9hQv6jbDd7ACqSy5-2bI9JGLH92qNCOuLRt203kcO7pETQWjQGGEAKLINaHCyd284LUEn3SkdMb0iUHotj3lQ0h11cQD3YsGkSrsWB1WnYx`}}, (error, response, body) => {
-//   if (!error && response.statusCode == 200) {
-//     console.log(body);
-//     this.setState(data: body);
-//   }
-// })

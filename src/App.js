@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-var request = require('request');
+import Business from "./components/Business.js"
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class App extends Component {
         <p className="App-intro">
           {
             Object.keys(this.state.data).length !== 0 &&
-              this.state.data.businesses[0].name
+              this.state.data.businesses.map(element => <Business businesses={element}/>)
           }
         </p>
       </div>
