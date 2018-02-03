@@ -21,7 +21,7 @@ class Home extends React.Component {
       <ListGroup>
         {
           Object.keys(data).length !== 0 &&
-            data.businesses.map(element => <Business businesses={element}/>)
+            data.businesses.map((element, index) => <Business index={index} businesses={element}/>)
         }
       </ListGroup>
     );
