@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Business from "./components/Business.js"
+import { ListGroup } from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
@@ -24,10 +25,12 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
+        <ListGroup>
           {
             Object.keys(this.state.data).length !== 0 &&
               this.state.data.businesses.map(element => <Business businesses={element}/>)
           }
+        </ListGroup>
         </p>
       </div>
     );
