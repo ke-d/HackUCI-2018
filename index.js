@@ -6,6 +6,7 @@ var path = require("path");
 const yelp = require('yelp-fusion');
 var SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
 var YELP_API_KEY = process.env.YELP_API_KEY
+
 if (process.env.SENDGRID_API_KEY && process.env.YELP_API_KEY) {
   console.log('It is set!');
 }
@@ -114,7 +115,7 @@ var promo_coupons = {
   ]
 };
 
-var promo_choice = Math.floor(Math.random() * 3) + 1
+var promo_choice = Math.floor(Math.random() * promo_coupons.length)
 
 app.get("/sendPromo", (req, res) => {
   var msg = {
@@ -217,11 +218,23 @@ var user = {
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 /****************************************** Yelp API **************************************/
-var zip = 90802
+var zip = [90802, 90703, 98105, 92844, 92602]
+var zip_choice = Math.floor(Math.random() * zip.length);
+function zipChoice() {
+  zip_choice = Math.floor(Math.random() * 5)
+}
+/*if(typeof(window) !== 'undefined') {
+  var timer = setTimeout(function() {
+    var zip_choice = Math.floor(Math.random() * zip.length)
+    console.log(zip_choice)
+  }, 500);*/
+  //zip_choice = Math.floor(Math.random() * zip.length)
+//}
 
+//zip_choice = zipRandom(zip)
 
 app.get("/testData", (req, res) => {
-  request({url: `https://api.yelp.com/v3/businesses/search?location=${zip}&results=restaurants`, headers: {"Access-Control-Allow-Origin": "*", Authorization: `Bearer ${YELP_API_KEY}`}}, (error, response, body) => {
+  request({url: `https://api.yelp.com/v3/businesses/search?location=${zip[zip_choice]}&results=restaurants`, headers: {"Access-Control-Allow-Origin": "*", Authorization: `Bearer ${YELP_API_KEY}`}}, (error, response, body) => {
     if (!error && response.statusCode == 200) {
       console.log(body);
       res.send(body);
@@ -229,9 +242,6 @@ app.get("/testData", (req, res) => {
   })
 
 });
-
-
-
 
 
 //app.get('/result',(req,res) => res.send(prioritylist.name))
