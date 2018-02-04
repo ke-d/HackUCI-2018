@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sendgrid/mail": "^6.2.1",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "helmet": "^3.10.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
@@ -17,7 +19,8 @@
     "yelp-fusion": "^2.0.3"
   },
   "scripts": {
-    "start": "node ./server/server.js & react-scripts start",
+    "start": "react-scripts start",
+    "server": "node ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
