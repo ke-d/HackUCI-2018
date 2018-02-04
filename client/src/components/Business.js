@@ -4,9 +4,7 @@ import { ListGroupItem } from 'react-bootstrap';
 const Business = (props) => {
   const {businesses, index} = props;
   return (
-    <div>
-    <h1 classname = "midadjust"> Places Near You </h1>
-    <span>{index+1}</span>  
+    <div> 
     
     <ListGroupItem header={businesses.name}>
       <ul className ="flex-container">
@@ -17,7 +15,7 @@ const Business = (props) => {
         <div className = " leftadjust" >{`Rating: ${businesses.rating}`}</div>
         <div className = " leftadjust">{`Price: ${businesses.price}`}</div>
         <div>{`Location: ${businesses.location.address1} ${businesses.location.city}, ${businesses.location.state}`}</div>
-        <div className = "leftadjust">{`Distance: ${Math.round(businesses.distance * 3.28084)} Feet`}</div>
+        <div className = "leftadjust">{`Distance: ${Math.round((businesses.distance * 0.000621371)*100)/100} Miles`}</div>
         <img className = "favoriteimage favoritemargin "src={`https://image.flaticon.com/icons/png/128/126/126471.png`}/>
       </div>
       </ul>

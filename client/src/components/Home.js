@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Button, ButtonToolbar } from 'react-bootstrap';
 import Business from "./Business.js";
 
 class Home extends React.Component {
@@ -15,10 +15,16 @@ class Home extends React.Component {
     .then(data => this.setState({data}));
   }
 
+
+
   render() {
     const {data} = this.state;
+
     return (
-      <ListGroup>
+      <ListGroup> <h1 style={{marginLeft: "200px"}}>Places you can go</h1> 
+      <ButtonToolbar>
+       <Button bsStyle="danger" href={Object.keys(data).length !== 0 ? data.businesses[Math.floor(Math.random() * data.businesses.length)].url : ""} style={{marginLeft: "800px"}}>I Don't Know where to eat</Button>
+       </ButtonToolbar>
         {
           Object.keys(data).length !== 0 &&
             data.businesses.map((element, index) => <Business index={index} businesses={element}/>)
