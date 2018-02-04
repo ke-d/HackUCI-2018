@@ -33,7 +33,7 @@
 
 profilepicture
 {
-  width: 200%;
+  width: 1%;
 }
 
 .leftadjust
@@ -73,6 +73,7 @@ profilepicture
   padding-left: 50px;
 }
 
+
 .flex-container {
   padding: 0;
   margin: 0;
@@ -102,21 +103,6 @@ profilepicture
 }
 
 
-.navbar-header {
-  background-color: rgb(112, 16, 16);
-}
-.navbar-nav{
-  background-color: rgb(112, 16, 16);
-
-}
-.navbar-collapse{
-  background-color: rgb(112, 16, 16);
-  color: rgb(112, 16, 16);
-}
-.navbar-brand
-{
-  -webkit-text-fill-color: white;
-}
 
 
 
@@ -124,3 +110,6 @@ profilepicture
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+

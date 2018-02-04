@@ -17,8 +17,6 @@ class Business extends React.Component {
     const {businesses, index} = this.props;
     return (
       <div>
-      <h1 classname = "midadjust"> Places Near You </h1>
-      <span>{index+1}</span>
 
       <ListGroupItem header={businesses.name}>
         <ul className ="flex-container">
@@ -29,12 +27,13 @@ class Business extends React.Component {
           <div className = " leftadjust" >{`Rating: ${businesses.rating}`}</div>
           <div className = " leftadjust">{`Price: ${businesses.price}`}</div>
           <div>{`Location: ${businesses.location.address1} ${businesses.location.city}, ${businesses.location.state}`}</div>
-          <div className = "leftadjust">{`Distance: ${Math.round(businesses.distance * 3.28084)} Feet`}</div>
+         <div className = "leftadjust">{`Distance: ${Math.round((businesses.distance * 0.000621371)*100)/100} Miles`}</div>
           <img onClick={() => this.toggleFavorite()} className = "favoriteimage favoritemargin canClick" src={this.state.favorite ? RedHeart : Heart}/>
         </div>
         </ul>
 
       </ListGroupItem>
+
       </div>
     )
   }
