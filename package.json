@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
+    "@sendgrid/mail": "^6.2.1",
     "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "helmet": "^3.10.0",
     "request": "^2.83.0",
     "yelp-fusion": "^2.0.3"
   }
