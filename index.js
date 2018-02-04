@@ -5,7 +5,7 @@ var request = require('request');
 var path = require("path");
 const yelp = require('yelp-fusion');
 const client = yelp.client('Ic0tWvEOzB9fGAUPFeL4y9hQv6jbDd7ACqSy5-2bI9JGLH92qNCOuLRt203kcO7pETQWjQGGEAKLINaHCyd284LUEn3SkdMb0iUHotj3lQ0h11cQD3YsGkSrsWB1WnYx');
-app.use(cors());
+//app.use(cors());
 
 //User Input
 // var latitude = 33.648803;
@@ -69,6 +69,8 @@ app.use(cors());
 //     }
 //   })
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 app.get("/testData", (req, res) => {
@@ -87,14 +89,12 @@ app.get("/testData", (req, res) => {
 
 //app.get('/result',(req,res) => res.send(prioritylist.name))
 
-
-// Define the port to run on
-app.set('port', 3000);
-
-app.use(express.static(path.join(__dirname, '../build')));
-
-// Listen for requests
-var server = app.listen(app.get('port'), () => {
-  var port = server.address().port;
-  console.log('Magic happens on port ' + port);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+
+
+const port = process.env.PORT || 3000;
+app.listen(port);
+
+console.log(`Password generator listening on ${port}`);
