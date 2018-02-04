@@ -4,16 +4,21 @@ var cors = require('cors');
 var request = require('request');
 var path = require("path");
 const yelp = require('yelp-fusion');
-
-const client = yelp.client('Ic0tWvEOzB9fGAUPFeL4y9hQv6jbDd7ACqSy5-2bI9JGLH92qNCOuLRt203kcO7pETQWjQGGEAKLINaHCyd284LUEn3SkdMb0iUHotj3lQ0h11cQD3YsGkSrsWB1WnYx');
+var SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
+var YELP_API_KEY = process.env.YELP_API_KEY
+if (process.env.SENDGRID_API_KEY && process.env.YELP_API_KEY) {
+  console.log('It is set!');
+}
+else {
+  console.log('No set!');
+}
+const client = yelp.client(YELP_API_KEY);
 //app.use(cors());
 
 var helmet = require('helmet')
 const sgMail = require('@sendgrid/mail'); // used to send mail
-const sg_key = "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"
-const yelp_key = 'Ic0tWvEOzB9fGAUPFeL4y9hQv6jbDd7ACqSy5-2bI9JGLH92qNCOuLRt203kcO7pETQWjQGGEAKLINaHCyd284LUEn3SkdMb0iUHotj3lQ0h11cQD3YsGkSrsWB1WnYx';
 
-sgMail.setApiKey(sg_key);
+sgMail.setApiKey(SENDGRID_API_KEY);
 app.use(helmet());
 
 /******************************* Sends an email with the receipt ************************/
@@ -41,6 +46,14 @@ var orderList = {
   ]
 }
 
+function createReceipt(oList) {
+  var orders = "<tr><th><strong>Item</strong></th><th><strong>Quantity</strong></th><th><strong>Price</strong></th><tr>";
+  for(var i = 0; i < oList.orders.length; i++) {
+    orders += "<tr><td>" + oList.orders[i].item + "</td><td>" + oList.orders[i].quantity + "</td><td>" + oList.orders[i].price + "</td></tr>"
+  }
+  return orders;
+}
+
 app.get("/sendReceipt/", (req, res) => {
   const { query:
     { to = 'lordkass@gmail.com',
@@ -51,6 +64,9 @@ app.get("/sendReceipt/", (req, res) => {
     to: `Haydn <${to}>`,
     from: `Team Sudoku <${from}>`,
     subject: `Receipt from ${orderList.restaurant_name}`,
+    substitutions: {
+      "orders": createReceipt(orderList)
+    }, 
     content: [
       {
         "type": "text/html",
@@ -60,7 +76,10 @@ app.get("/sendReceipt/", (req, res) => {
   };
 
   sgMail.send(msg).then(() => {
+    createReceipt(orderList);
     console.log("Message sent!")
+    //var test = "<table>" + msg.substitutions.orders + "</table>";
+    //res.send(test);
     res.status(200).send(orderList).end();
   }).catch(e => {
     console.error(e.toString());
@@ -115,7 +134,7 @@ app.get("/emailStats", (req, res) => {
     method: 'GET',
     url: 'https://api.sendgrid.com/v3/stats',
     qs: { start_date: '2018-02-02', aggregated_by: 'day' },
-    headers: { authorization: `Bearer ${sg_key}` },
+    headers: { authorization: `Bearer ${SENDGRID_API_KEY}` },
     body: '{}'
   };
 
@@ -199,7 +218,7 @@ var zip = 90802
 
 
 app.get("/testData", (req, res) => {
-  request({url: `https://api.yelp.com/v3/businesses/search?location=${zip}&results=restaurants`, headers: {"Access-Control-Allow-Origin": "*", Authorization: `Bearer ${yelp_key}`}}, (error, response, body) => {
+  request({url: `https://api.yelp.com/v3/businesses/search?location=${zip}&results=restaurants`, headers: {"Access-Control-Allow-Origin": "*", Authorization: `Bearer ${YELP_API_KEY}`}}, (error, response, body) => {
     if (!error && response.statusCode == 200) {
       console.log(body);
       res.send(body);
