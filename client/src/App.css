@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+tr, th {
+  text-align: center !important;
+}
+
 .favoriteimage
 {
   width: 40px;
@@ -110,6 +114,3 @@ profilepicture
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-
-

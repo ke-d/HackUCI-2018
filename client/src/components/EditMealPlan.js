@@ -7,7 +7,7 @@ class EditMealPlan extends React.Component {
       super(props);
       this.state = {
         budget: localStorage.getItem("budget"),
-        calorie:localStorage.getItem("calorie")
+        calorie: localStorage.getItem("calorie")
       };
     }
 
@@ -60,7 +60,6 @@ class EditMealPlan extends React.Component {
           Seafood
       </Checkbox>
 
-      <Button type="submit">Submit</Button>
       </Col>
       </Row>
       </Grid>
