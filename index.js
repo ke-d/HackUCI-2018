@@ -218,11 +218,12 @@ var user = {
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 /****************************************** Yelp API **************************************/
-var zip = [90802, 90703, 98105, 92844, 92602]
+var zip = [90802, 90703, 98105, 92844, 92602, 91768, 53075, 90001, 90029, 90063]
 var zip_choice = Math.floor(Math.random() * zip.length);
-function zipChoice() {
-  zip_choice = Math.floor(Math.random() * 5)
-}
+  setInterval(function() {
+     zip_choice = Math.floor(Math.random() * zip.length);
+     //console.log("HERE")
+  },1000);
 /*if(typeof(window) !== 'undefined') {
   var timer = setTimeout(function() {
     var zip_choice = Math.floor(Math.random() * zip.length)
