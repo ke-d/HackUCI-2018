@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import {Link} from "react-router-dom";
+
 const NavBarHeader = (props) => {
   return (
     <Navbar fixedTop inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-      <Link to="/">React-Bootstrap</Link>
+      <Link to="/">Fed Up</Link>
 
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <NavItem eventKey={1}>
-          {"My Info"}
-        </NavItem>
+        <li>
+        <Link to="/myinfo">
+
+            {"My Info"}
+
+        </Link>
+        </li>
         <li>
         <Link to="/editmealplan">
 

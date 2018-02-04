@@ -22,13 +22,14 @@
   font-size: large;
 }
 
-img{
-  width: 10%;
+.favoriteimage
+{
+  width: 40px;
 }
 
-#pizza
+profilepicture
 {
-  width: 10%;
+  width: 200%;
 }
 
 .leftadjust
@@ -36,16 +37,36 @@ img{
   text-align: left;
 }
 
+.rightadjust
+{
+  text-align: right;
+}
+.midadjust
+{
+  text-align: center;
+}
+
 .favoritemargin
 {
   margin-top: 10px;
-  margin-left: -280px;
+  margin-left: 0px;
 }
 
 .paddingtop
 {
   padding-top: 10px;
   padding-right: 50px;
+}
+
+.padcrazy
+{
+  padding-top: 100px;
+}
+
+.paddingleft
+{
+  padding-top: 10px;
+  padding-left: 50px;
 }
 
 .flex-container {
@@ -77,6 +98,21 @@ img{
 }
 
 
+.navbar-header {
+  background-color: rgb(112, 16, 16);
+}
+.navbar-nav{
+  background-color: rgb(112, 16, 16);
+  
+}
+.navbar-collapse{
+  background-color: rgb(112, 16, 16);
+  color: rgb(112, 16, 16);
+}
+.navbar-brand
+{
+  -webkit-text-fill-color: white;
+}
 
 
 
