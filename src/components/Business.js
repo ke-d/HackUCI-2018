@@ -5,7 +5,7 @@ const Business = (props) => {
   const {businesses, index} = props;
   return (
     <div>
-    
+    <h1 classname = "midadjust"> Places Near You </h1>
     <span>{index+1}</span>  
     
     <ListGroupItem header={businesses.name}>
@@ -18,7 +18,7 @@ const Business = (props) => {
         <div className = " leftadjust">{`Price: ${businesses.price}`}</div>
         <div>{`Location: ${businesses.location.address1} ${businesses.location.city}, ${businesses.location.state}`}</div>
         <div className = "leftadjust">{`Distance: ${Math.round(businesses.distance * 3.28084)} Feet`}</div>
-        <img className = "leftadjust im favoritemargin "src={`https://image.flaticon.com/icons/png/128/126/126471.png`}/>
+        <img className = "favoriteimage favoritemargin "src={`https://image.flaticon.com/icons/png/128/126/126471.png`}/>
       </div>
       </ul>
     
