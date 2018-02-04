@@ -28,18 +28,21 @@ var orderList = {
     {
       "oid": 1,
       "item": "Chicken Bowl",
+      "calories": 500,
       "quantity": 1,
       "price": 8
     },
     {
       "oid": 2,
       "item": "Beef Teriyaki",
+      "calories": 1000,
       "quantity": 2,
       "price": 11
     },
     {
       "oid": 3,
       "item": "Chicken Caesar Salad",
+      "calories": 300,
       "quantity": 1,
       "price": 6
     }
@@ -47,9 +50,9 @@ var orderList = {
 }
 
 function createReceipt(oList) {
-  var orders = "<tr><th><strong>Item</strong></th><th><strong>Quantity</strong></th><th><strong>Price</strong></th><tr>";
+  var orders = "<tr><th><strong>Item</strong></th><th><strong>Calories</th><th><strong>Quantity</strong></th><th><strong>Price</strong></th><tr>";
   for(var i = 0; i < oList.orders.length; i++) {
-    orders += "<tr><td>" + oList.orders[i].item + "</td><td>" + oList.orders[i].quantity + "</td><td>" + oList.orders[i].price + "</td></tr>"
+    orders += "<tr><td>" + oList.orders[i].item + "</td><td>" +oList.orders[i].calories + "</td><td>" + oList.orders[i].quantity + "</td><td>" + oList.orders[i].price + "</td></tr>"
   }
   return orders;
 }
