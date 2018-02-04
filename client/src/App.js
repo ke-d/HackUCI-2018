@@ -10,13 +10,13 @@ import {
 class App extends Component {
 
   render() {
-    console.log(this.state);
+
     return (
       <Router>
         <div>
         <NavBarHeader />
         <div style={{marginTop: "50px"}}>
-          <Routes />
+          <Routes state={this.state} />
         </div>
         </div>
       </Router>
