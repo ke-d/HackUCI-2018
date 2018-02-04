@@ -15,7 +15,6 @@ class Business extends React.Component {
   }
   render() {
     const {businesses, index} = this.props;
-    console.log(this.state.favorite);
     return (
       <div>
       <h1 classname = "midadjust"> Places Near You </h1>
