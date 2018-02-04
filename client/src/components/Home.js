@@ -10,7 +10,7 @@ class Home extends React.Component {
     }
   }
   componentDidMount() {
-    fetch("http://localhost:8080/testdata")
+    fetch(`/testData`)
     .then(results => results.json())
     .then(data => this.setState({data}));
   }

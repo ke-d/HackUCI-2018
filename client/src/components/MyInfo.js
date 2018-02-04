@@ -1,8 +1,11 @@
 import React from "react";
+import {Grid, Row, Col,} from "react-bootstrap";
 
 const MyInfo = (props) => {
     return (
-        <div>
+        <Grid>
+            <Row>
+                <Col xs={12} md={8}>
         <div className = "padcrazy"></div>
         <h1 className = "paddingleft"> My Info </h1>
         <img classname = "paddingleft profilepicture" src={'http://www.easternbiotech.com/beta/wp-content/uploads/2016/03/Child-Wellness-Profile.jpg'}></img>
@@ -11,7 +14,10 @@ const MyInfo = (props) => {
         <div className = "paddingleft">{`Budget`}</div>
         <div className = "paddingleft">{`E-mail`}</div>
         <div className = "paddingleft">{`Calorie Count`}</div>
-        </div >
+        
+        </Col>
+    </Row>
+    </Grid> 
     )
 }
 
