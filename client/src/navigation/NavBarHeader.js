@@ -31,9 +31,13 @@ const NavBarHeader = (props) => {
         <NavItem eventKey={3} href="#">
           {"My Coupons"}
         </NavItem>
-        <NavItem eventKey={4} href="#">
-          {"Settings"}
-        </NavItem>
+        <li>
+        <Link to="/about">
+
+            {"About"}
+
+        </Link>
+        </li>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
